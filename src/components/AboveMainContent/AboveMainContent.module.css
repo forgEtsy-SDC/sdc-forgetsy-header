@@ -1,0 +1,12 @@
+.header {
+  height: 104px;
+  border-bottom: 2px solid #dedede;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.header > * {
+  margin: 0;
+  font-family: "Gentium Basic", serif;
+}

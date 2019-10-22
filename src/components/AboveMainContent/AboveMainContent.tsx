@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { match } from "react-router-dom";
-import { APIENDPOINT } from "../Const";
-import { ApiResults } from "../interfaces/apiResultTypes";
+import { APIENDPOINT } from "../../Const";
+import { ApiResults } from "../../interfaces/apiResultTypes";
+import UpperLeftThird from "../UpperLeftThird/UpperLeftThird";
+import style from "./AboveMainContent.module.css";
 
 interface PropTypes {
   match: match<{ productId: string }>;
@@ -28,23 +30,29 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   }
 
   public componentDidMount() {
-    this.getProducts();
+    // this.getProducts();
   }
 
   public componentWillUnmount() {
-    this.source.cancel("cancelled on unmount");
+    // this.source.cancel("cancelled on unmount");
   }
 
   public componentDidUpdate(prevProps: PropTypes) {
-    if (
-      prevProps.match.params.productId !== this.props.match.params.productId
-    ) {
-      this.getProducts();
-    }
+    // if (
+    //   prevProps.match.params.productId !== this.props.match.params.productId
+    // ) {
+    //   this.getProducts();
+    // }
   }
 
   public render() {
-    return <header className="header"></header>;
+    return (
+      <header className={style.header}>
+        <UpperLeftThird />
+        <div className={style.upperRightThird}></div>
+        <div className={style.BottomThird}></div>
+      </header>
+    );
   }
 
   private async getProducts() {
