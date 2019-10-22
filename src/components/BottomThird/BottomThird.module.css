@@ -1,0 +1,17 @@
+.bottomThird {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  font-size: 15px;
+}
+
+.fakeLink {
+  color: black;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.fakeLink:hover {
+  text-decoration: underline;
+}

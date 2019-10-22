@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: nowrap;
   width: 45%;
+  height: 45px;
 }
 
 .logo {

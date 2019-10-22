@@ -3,7 +3,9 @@ import React from "react";
 import { match } from "react-router-dom";
 import { APIENDPOINT } from "../../Const";
 import { ApiResults } from "../../interfaces/apiResultTypes";
+import BottomThird from "../BottomThird/BottomThird";
 import UpperLeftThird from "../UpperLeftThird/UpperLeftThird";
+import UpperRightThird from "../UpperRightThird/UpperRightThird";
 import style from "./AboveMainContent.module.css";
 
 interface PropTypes {
@@ -49,8 +51,8 @@ class AboveMainContent extends React.Component<PropTypes, State> {
     return (
       <header className={style.header}>
         <UpperLeftThird />
-        <div className={style.upperRightThird}></div>
-        <div className={style.BottomThird}></div>
+        <UpperRightThird />
+        <BottomThird />
       </header>
     );
   }
