@@ -5,6 +5,7 @@
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-width: 800px;
 }
 
 .header > * {

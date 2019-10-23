@@ -19,6 +19,7 @@
   color: #222;
   background-color: #fff;
   cursor: pointer;
+  min-width: 80px;
 }
 
 .signIn:hover {
@@ -28,14 +29,20 @@
 
 .fakeLink,
 .discover,
-.cart {
+.cart,
+.fakeLinkRegister {
   color: black;
   padding-left: 15px;
   cursor: pointer;
 }
 
-.fakeLink:hover {
+.fakeLink:hover,
+.fakeLinkRegister:hover {
   text-decoration: underline;
+}
+
+.fakeLinkRegister {
+  margin-right: 10px;
 }
 
 .verticalRule {
@@ -48,6 +55,9 @@
   height: 36px;
   padding-right: 15px;
   display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
 .discover > span {

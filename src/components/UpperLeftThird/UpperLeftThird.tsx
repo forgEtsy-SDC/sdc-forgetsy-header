@@ -9,25 +9,11 @@ interface State {
 
 interface PropTypes {
   getProductsBySearch: (query: string) => Promise<void>;
+  initialResults: ApiResults[];
   searchResults: ApiResults[];
 }
 
 export default class UpperLeftThird extends React.Component<PropTypes, State> {
-  constructor(props: PropTypes) {
-    super(props);
-    this.state = {
-      searchInput: ""
-    };
-  }
-
-  public componentDidMount() {
-    // this.getProducts();
-  }
-
-  public componentDidUpdate() {
-    // stuff
-  }
-
   public render() {
     return (
       <div className={style.upperLeftThird}>
@@ -35,6 +21,7 @@ export default class UpperLeftThird extends React.Component<PropTypes, State> {
         <SearchField
           getProductsBySearch={this.props.getProductsBySearch}
           searchResults={this.props.searchResults}
+          initialResults={this.props.initialResults}
         />
       </div>
     );

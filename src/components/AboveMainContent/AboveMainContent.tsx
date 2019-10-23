@@ -14,6 +14,7 @@ interface PropTypes {
 
 interface State {
   searchResults: ApiResults[];
+  initialResults: ApiResults[];
   selectedProduct: ApiResults | null;
 }
 
@@ -26,6 +27,7 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   constructor(props: any) {
     super(props);
     this.state = {
+      initialResults: [],
       searchResults: [],
       selectedProduct: null
     };
@@ -41,19 +43,12 @@ class AboveMainContent extends React.Component<PropTypes, State> {
     this.searchSource.cancel("cancelled on unmount");
   }
 
-  public componentDidUpdate(prevProps: PropTypes) {
-    // if (
-    //   prevProps.match.params.productId !== this.props.match.params.productId
-    // ) {
-    //   this.getProducts();
-    // }
-  }
-
   public render() {
     return (
       <header className={style.header}>
         <UpperLeftThird
           getProductsBySearch={this.getProductsBySearch}
+          initialResults={this.state.initialResults}
           searchResults={this.state.searchResults}
         />
         <UpperRightThird />
@@ -67,8 +62,8 @@ class AboveMainContent extends React.Component<PropTypes, State> {
       const results: any = await axios.get(`${APIENDPOINT}/initialproducts`, {
         cancelToken: this.initialSource.token
       });
-      const searchResults: ApiResults[] = results.data;
-      this.setState({ searchResults });
+      const initialResults: ApiResults[] = results.data;
+      this.setState({ initialResults });
     } catch (error) {
       if (axios.isCancel(error)) {
         console.error("Request canceled", error.message);
@@ -80,18 +75,23 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   }
 
   private async getProductsBySearch(query: string) {
-    try {
-      const results: any = await axios.get(`${APIENDPOINT}/products/${query}`, {
-        cancelToken: this.searchSource.token
-      });
-      const searchResults: ApiResults[] = results.data;
-      this.setState({ searchResults });
-    } catch (error) {
-      if (axios.isCancel(error)) {
-        console.error("Request canceled", error.message);
-        throw new Error("Cancelled");
-      } else {
-        console.error(error);
+    if (query) {
+      try {
+        const results: any = await axios.get(
+          `${APIENDPOINT}/products/${query}`,
+          {
+            cancelToken: this.searchSource.token
+          }
+        );
+        const searchResults: ApiResults[] = results.data;
+        this.setState({ searchResults });
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.error("Request canceled", error.message);
+          throw new Error("Cancelled");
+        } else {
+          console.error(error);
+        }
       }
     }
   }
