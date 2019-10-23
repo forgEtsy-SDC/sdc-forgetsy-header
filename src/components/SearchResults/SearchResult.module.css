@@ -1,8 +1,18 @@
 .searchResult {
   list-style: none;
-  /* width: 350px; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 2.8;
+}
+
+.searchResultLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.searchResult:hover {
+  background-color: rgb(172, 172, 172);
+  padding: 0 20px;
+  margin: 0 -20px;
 }

@@ -5,12 +5,14 @@ import style from "./SearchField.module.css";
 
 interface PropTypes {
   getProductsBySearch: (query: string) => Promise<void>;
+  initialResults: ApiResults[];
   searchResults: ApiResults[];
 }
 
 interface State {
   searchInput: string;
   resultsVisible: boolean;
+  redirectInProgress: boolean;
 }
 
 export default class SearchField extends React.Component<PropTypes, State> {
@@ -18,16 +20,18 @@ export default class SearchField extends React.Component<PropTypes, State> {
     super(props);
     this.state = {
       searchInput: "",
-      resultsVisible: false
+      resultsVisible: false,
+      redirectInProgress: true
     };
     this.onChange = this.onChange.bind(this);
     this.displayResults = this.displayResults.bind(this);
     this.hideResults = this.hideResults.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   public componentDidUpdate(prevProps: PropTypes, prevState: State) {
     if (this.state.searchInput !== prevState.searchInput) {
-      console.log(this.state.searchInput);
+      this.props.getProductsBySearch(this.state.searchInput);
     }
   }
 
@@ -55,7 +59,15 @@ export default class SearchField extends React.Component<PropTypes, State> {
           </button>
         </div>
         {this.state.resultsVisible && (
-          <SearchResults searchResults={this.props.searchResults} />
+          <SearchResults
+            results={
+              this.state.searchInput
+                ? this.props.searchResults
+                : this.props.initialResults
+            }
+            initialOnly={this.state.searchInput ? false : true}
+            handleRedirect={this.handleRedirect}
+          />
         )}
       </div>
     );
@@ -66,7 +78,18 @@ export default class SearchField extends React.Component<PropTypes, State> {
   }
 
   private hideResults() {
-    this.setState({ resultsVisible: false });
+    const delayms = 150;
+    if (this.state.redirectInProgress) {
+      setTimeout(() => {
+        this.setState({ resultsVisible: false });
+      }, delayms);
+    } else {
+      this.setState({ resultsVisible: false });
+    }
+  }
+
+  private handleRedirect(status: boolean) {
+    this.setState({ redirectInProgress: status });
   }
 
   private onChange(e: React.ChangeEvent<HTMLInputElement>) {

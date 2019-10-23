@@ -16,4 +16,7 @@
 
 .popularItems {
   list-style: none;
+  padding-bottom: 5px;
+  font-variant: small-caps;
+  font-size: larger;
 }
