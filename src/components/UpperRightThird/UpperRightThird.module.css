@@ -1,0 +1,55 @@
+.upperRightThird {
+  padding: 20px 30px 0 0;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 50px;
+  width: 35%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.signIn {
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid black;
+  font-size: 14px;
+  height: 34px;
+  padding: 8px 12px;
+  text-align: center;
+  color: #222;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.signIn:hover {
+  color: #fff;
+  background-color: #222;
+}
+
+.fakeLink,
+.discover,
+.cart {
+  color: black;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.fakeLink:hover {
+  text-decoration: underline;
+}
+
+.verticalRule {
+  font-size: 30px;
+}
+
+.discover {
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+  height: 36px;
+  padding-right: 15px;
+  display: flex;
+}
+
+.discover > span {
+  align-self: center;
+}

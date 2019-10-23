@@ -15,18 +15,18 @@ const PORT = 3001;
 
 const db = require("../database/db");
 
-app.get("/api/allproducts", (req, res) => {
-  db.findAllProducts()
+app.get("/api/initialproducts", (req, res) => {
+  db.findTenRandomProducts()
     .then(product => res.send(product))
     .catch(err => {
       res.status(400).send("couldnt return those records");
     });
 });
 
-app.get("/api/product/:listing_id", (req, res) => {
-  const listingID = req.params;
-  db.findCombinedProductsforID(listingID)
-    .then(product => res.send(product))
+app.get("/api/products/:searchterm", (req, res) => {
+  const searchterm = req.params.searchterm;
+  db.findProducts(searchterm)
+    .then(products => res.send(products))
     .catch(err => {
       res.status(400).send("couldnt find that record");
     });

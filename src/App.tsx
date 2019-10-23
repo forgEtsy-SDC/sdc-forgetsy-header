@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AboveMainContent from "./components/AboveMainContent";
+import AboveMainContent from "./components/AboveMainContent/AboveMainContent";
 
 class App extends React.Component<{}, {}> {
   public render() {
