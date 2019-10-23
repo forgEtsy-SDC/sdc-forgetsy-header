@@ -43,8 +43,8 @@
 }
 
 .discover {
-  border-left: 1px solid rgb(179, 179, 179);
-  border-right: 1px solid rgb(179, 179, 179);
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
   height: 36px;
   padding-right: 15px;
   display: flex;

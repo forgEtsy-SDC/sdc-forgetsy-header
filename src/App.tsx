@@ -8,7 +8,7 @@ class App extends React.Component<{}, {}> {
       <Router>
         <Route
           path="/:productId"
-          render={routeProps => {
+          render={(routeProps) => {
             return <AboveMainContent {...routeProps} />;
           }}
         />

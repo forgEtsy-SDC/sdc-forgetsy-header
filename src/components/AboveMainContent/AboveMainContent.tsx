@@ -13,7 +13,6 @@ interface PropTypes {
 }
 
 interface State {
-  searchInput: string;
   searchResults: ApiResults[];
   selectedProduct: ApiResults | null;
 }
@@ -25,18 +24,17 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      searchInput: "",
       searchResults: [],
       selectedProduct: null
     };
   }
 
   public componentDidMount() {
-    // this.getProducts();
+    this.getInitialProducts();
   }
 
   public componentWillUnmount() {
-    // this.source.cancel("cancelled on unmount");
+    this.source.cancel("cancelled on unmount");
   }
 
   public componentDidUpdate(prevProps: PropTypes) {
@@ -57,17 +55,13 @@ class AboveMainContent extends React.Component<PropTypes, State> {
     );
   }
 
-  private async getProducts() {
-    const productId = this.props.match.params.productId;
+  private async getInitialProducts() {
     try {
-      const results = await axios.get(`${APIENDPOINT}/product/${productId}`, {
+      const results: any = await axios.get(`${APIENDPOINT}/initialproducts`, {
         cancelToken: this.source.token
       });
-
-      const selectedProductsIndex = 0;
-      const selectedProduct: ApiResults = results.data[selectedProductsIndex];
-
-      this.setState({ selectedProduct });
+      const searchResults: ApiResults[] = results.data;
+      this.setState({ searchResults });
     } catch (error) {
       if (axios.isCancel(error)) {
         console.error("Request canceled", error.message);
