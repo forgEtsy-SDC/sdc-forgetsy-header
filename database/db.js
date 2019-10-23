@@ -4,8 +4,8 @@ const accessories = require("./accessories.js");
 const toys = require("./toys.js");
 
 const mongoose = require("mongoose");
-// const host = "mongo";
-const host = "localhost";
+const host = "mongo";
+// const host = "localhost";
 mongoose.connect(`mongodb://${host}:27017/products`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
