@@ -1,10 +1,6 @@
 import React from "react";
 import style from "./BottomThird.module.css";
 
-interface State {
-  searchInput: string;
-}
-
 const BottomThird: React.FunctionComponent<{}> = () => {
   return (
     <div className={style.bottomThird}>

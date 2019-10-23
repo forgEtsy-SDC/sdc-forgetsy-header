@@ -1,0 +1,8 @@
+.searchResult {
+  list-style: none;
+  /* width: 350px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 2.8;
+}

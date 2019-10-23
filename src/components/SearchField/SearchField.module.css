@@ -1,10 +1,11 @@
-.fieldDiv {
+.searchFieldContainer {
   color: #222;
   font-size: 14px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   padding-top: 4px;
+  position: relative;
 }
 
 .inputDiv {

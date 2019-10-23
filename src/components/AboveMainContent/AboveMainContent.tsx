@@ -18,8 +18,10 @@ interface State {
 }
 
 class AboveMainContent extends React.Component<PropTypes, State> {
-  private CancelToken = axios.CancelToken;
-  private source = this.CancelToken.source();
+  private InitialCancelToken = axios.CancelToken;
+  private SearchCancelToken = axios.CancelToken;
+  private initialSource = this.InitialCancelToken.source();
+  private searchSource = this.SearchCancelToken.source();
 
   constructor(props: any) {
     super(props);
@@ -27,6 +29,7 @@ class AboveMainContent extends React.Component<PropTypes, State> {
       searchResults: [],
       selectedProduct: null
     };
+    this.getProductsBySearch = this.getProductsBySearch.bind(this);
   }
 
   public componentDidMount() {
@@ -34,7 +37,8 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   }
 
   public componentWillUnmount() {
-    this.source.cancel("cancelled on unmount");
+    this.initialSource.cancel("cancelled on unmount");
+    this.searchSource.cancel("cancelled on unmount");
   }
 
   public componentDidUpdate(prevProps: PropTypes) {
@@ -48,7 +52,10 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   public render() {
     return (
       <header className={style.header}>
-        <UpperLeftThird />
+        <UpperLeftThird
+          getProductsBySearch={this.getProductsBySearch}
+          searchResults={this.state.searchResults}
+        />
         <UpperRightThird />
         <BottomThird />
       </header>
@@ -58,7 +65,24 @@ class AboveMainContent extends React.Component<PropTypes, State> {
   private async getInitialProducts() {
     try {
       const results: any = await axios.get(`${APIENDPOINT}/initialproducts`, {
-        cancelToken: this.source.token
+        cancelToken: this.initialSource.token
+      });
+      const searchResults: ApiResults[] = results.data;
+      this.setState({ searchResults });
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.error("Request canceled", error.message);
+        throw new Error("Cancelled");
+      } else {
+        console.error(error);
+      }
+    }
+  }
+
+  private async getProductsBySearch(query: string) {
+    try {
+      const results: any = await axios.get(`${APIENDPOINT}/products/${query}`, {
+        cancelToken: this.searchSource.token
       });
       const searchResults: ApiResults[] = results.data;
       this.setState({ searchResults });

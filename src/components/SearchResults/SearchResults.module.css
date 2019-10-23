@@ -1,0 +1,19 @@
+.searchResultsContainer {
+  z-index: 999;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  border-radius: 3px;
+  position: absolute;
+  top: 42px;
+  left: 20px;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.searchResultsList {
+  padding: 0 20px;
+}
+
+.popularItems {
+  list-style: none;
+}
