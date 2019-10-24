@@ -5,6 +5,7 @@ import { ApiResults } from "../../interfaces/apiResultTypes";
 import style from "./SearchResult.module.css";
 
 interface PropTypes {
+  index: number;
   title: ApiResults["title"];
   listingId: ApiResults["listing_id"];
   handleRedirect: (status: boolean) => void;
@@ -17,7 +18,9 @@ const SearchResult: React.FunctionComponent<PropTypes> = (props) => {
       className={style.searchResultLink}
       to={`/${props.listingId}`}
     >
-      <li className={style.searchResult}>{unescape(props.title)}</li>
+      <li tabIndex={props.index} className={style.searchResult}>
+        {unescape(props.title)}
+      </li>
     </Link>
   );
 };

@@ -21,10 +21,11 @@ const SearchResults: React.FunctionComponent<PropTypes> = (props) => {
         {props.results.length < 1 ? (
           <div className={style.searchResult}>No results for this query</div>
         ) : (
-          props.results.map((result) => {
+          props.results.map((result, index) => {
             return (
               <SearchResult
                 key={result.listing_id}
+                index={index}
                 listingId={result.listing_id}
                 title={result.title}
                 handleRedirect={props.handleRedirect}
