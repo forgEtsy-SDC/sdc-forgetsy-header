@@ -45,15 +45,20 @@ class AboveMainContent extends React.Component<PropTypes, State> {
 
   public render() {
     return (
-      <header className={style.header}>
-        <UpperLeftThird
-          getProductsBySearch={this.getProductsBySearch}
-          initialResults={this.state.initialResults}
-          searchResults={this.state.searchResults}
-        />
-        <UpperRightThird />
-        <BottomThird />
-      </header>
+      <>
+        <div className={style.headerMargin}>
+          <header className={style.header}>
+            <UpperLeftThird
+              getProductsBySearch={this.getProductsBySearch}
+              initialResults={this.state.initialResults}
+              searchResults={this.state.searchResults}
+            />
+            <UpperRightThird />
+            <BottomThird />
+          </header>
+        </div>
+        <div className={style.horizontalRule} />
+      </>
     );
   }
 
