@@ -1,6 +1,7 @@
 # forgEtsy_ImageGrid_fullstack
 
 Link to microservice - https://bit.ly/2oqtf5r
+![](http://www.giphy.com/gifs/MaIQMsZj4yP7bmHGFu)
 
 ### Entry
 
