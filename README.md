@@ -2,14 +2,17 @@
 
 Link to microservice demo - https://bit.ly/2oqtf5r
 
+
+### Technologies
 Frontend: TypeScript, React, React Router & CSS Modules
+
 Backend: Node, Express, Docker, MongoDB & Mongoose
 
 ![header demo](https://thumbs.gfycat.com/CavernousAdmiredCod-size_restricted.gif)
 
 ### Entry
 
-Entry is App.tsx for routing, primary entry for content is "BelowMainContent"
+App.tsx is used to capture routing. Actual component logic starts in `BelowMainContent`
 
 ### Scripts
 
