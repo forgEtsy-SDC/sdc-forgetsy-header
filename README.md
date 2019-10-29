@@ -1,7 +1,8 @@
 # forgEtsy_ImageGrid_fullstack
 
 Link to microservice - https://bit.ly/2oqtf5r
-![](https://gifs-n-stuff.s3.us-east-2.amazonaws.com/header+forgetsy.gif)
+
+![header demo](https://gifs-n-stuff.s3.us-east-2.amazonaws.com/header+forgetsy.gif)
 
 ### Entry
 
