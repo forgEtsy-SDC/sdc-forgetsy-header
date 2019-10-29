@@ -14,7 +14,7 @@ Deployment: Docker, Docker-compose, AWS EC2
 
 ### Entry
 
-App.tsx is used to capture routing. Actual component logic starts in `BelowMainContent`
+App.tsx is the entry point for any changes to react router/initial router changes. Otherwise, actual component logic starts in `AboveMainContent`
 
 ### Scripts
 
