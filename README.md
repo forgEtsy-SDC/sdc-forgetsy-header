@@ -1,4 +1,4 @@
-# forgEtsy_ImageGrid_fullstack
+# forgEtsy header & search bar
 
 Link to microservice - https://bit.ly/2oqtf5r
 
