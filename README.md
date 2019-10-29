@@ -1,6 +1,9 @@
 # forgEtsy header & search bar
 
-Link to microservice - https://bit.ly/2oqtf5r
+Link to microservice demo - https://bit.ly/2oqtf5r
+
+Frontend: TypeScript, React, React Router & CSS Modules
+Backend: Node, Express, Docker, MongoDB & Mongoose
 
 ![header demo](https://thumbs.gfycat.com/CavernousAdmiredCod-size_restricted.gif)
 
