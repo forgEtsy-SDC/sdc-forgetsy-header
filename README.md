@@ -6,7 +6,9 @@ Link to microservice demo - https://bit.ly/2oqtf5r
 ### Technologies
 Frontend: TypeScript, React, React Router & CSS Modules
 
-Backend: Node, Express, Docker, MongoDB & Mongoose
+Backend: Node, Express, MongoDB & Mongoose
+
+Deployment: Docker, Docker-compose, AWS EC2
 
 ![header demo](https://thumbs.gfycat.com/CavernousAdmiredCod-size_restricted.gif)
 
